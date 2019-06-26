@@ -1,33 +1,101 @@
+body {
+  background-color: #0000ff;
+  font-family: sans-serif, Georgia, "Palatino Linotype", Arial, Helvetica;
+}
 .App {
   text-align: center;
+  background-color: #ffffff;
+  width: 40%;
+  height: 100%;
+  margin-left: 58%;
+  margin-top: 0%;
+  border-radius: 5px;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  padding: 30px;
+  margin-top: 50px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.headerUp {
+  padding: 20px;
+  margin-top: 10px;
 }
-
-.App-link {
-  color: #61dafb;
+.head {
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.headUp {
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.container {
+  height: 100%;
+  width: 80%;
+  padding: 30px;
+  margin-left: 25px;
+  border-radius: 5px;
+}
+.containerUp {
+  height: 100%;
+  width: 80%;
+  padding: 30px;
+  padding-bottom: 0px;
+  margin-left: 25px;
+  border-radius: 5px;
+}
+.form {
+  height: 70%;
+  width: 100%;
+  margin-top: 20px;
+}
+.formUp {
+  height: 70%;
+  width: 100%;
+  margin-top: -30px;
+  padding-bottom: 0%;
+  margin-bottom: -5%;
+}
+.form-input {
+  background-color: #eaf2f8;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  height: 50px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(24, 19, 19);
+}
+.form-input:focus {
+  background-color: #2874a6;
+  color: #ffffff;
+}
+.check {
+  margin-left: -270px;
+  margin-right: 10px;
+}
+.btn {
+  width: 100%;
+  height: 45px;
+  border: none;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  background: #2196f3;
+  color: #fff;
+}
+.btn:hover {
+  background: darkblue;
+  color: whitesmoke;
+}
+a.link {
+  text-decoration: none;
+}
+.link:hover {
+  color: rgb(12, 1, 32);
 }
