@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import axios from ('axios')
 const axios = require("axios");
 
 export class Signup extends Component {
@@ -10,32 +9,39 @@ export class Signup extends Component {
       fullname: "",
       username: "",
       email: "",
-      password: ""
+      password: "",
+      passwordConfirm: ""
     };
   }
 
   handleSubmit = async event => {
     event.preventDefault();
-    axios
-      .post("http://localhost:8080/signup", this.state)
-      .then(res => {
-        const data = res.data;
-        if (data.status) {
-          alert(
-            `Congratulations ${data.userDetails.fullname} SignUp Successful`
-          );
-        } else {
-          alert(`Pls try again`);
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    if (this.state.password !== this.state.passwordConfirm) {
+      alert(`Password mismatch...Try again`);
+    } else {
+      axios
+        .post("http://localhost:8080/signup", this.state)
+        .then(res => {
+          const data = res.data;
+
+          data.status
+            ? this.setState({
+                loginSuccess: true,
+                fullname: data.userDetails.fullname
+              })
+            : this.setState({
+                loginFail: true
+              });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
 
   handleChange = event => {
     let target = event.target;
-    let value = target.vale === "checked" ? target.checked : target.value;
+    let value = target.value === "checked" ? target.checked : target.value;
     let name = target.name;
     this.setState({
       [name]: value
@@ -53,14 +59,16 @@ export class Signup extends Component {
           <form className="formUp" onSubmit={this.handleSubmit}>
             <input
               type="text"
+              name="fullname"
               value={this.state.fullname}
               onChange={this.handleChange}
-              placeholder="Enter FullName"
+              placeholder="FullName"
               className="form-input"
             />
             <br />
             <input
               type="text"
+              name="username"
               value={this.state.username}
               onChange={this.handleChange}
               placeholder="Enter UserName"
@@ -69,14 +77,16 @@ export class Signup extends Component {
             <br />
             <input
               type="email"
+              name="email"
               value={this.state.email}
               onChange={this.handleChange}
-              placeholder="Enter Email"
+              placeholder="email@example.com"
               className="form-input"
             />
             <br />
             <input
               type="password"
+              name="password"
               value={this.state.password}
               onChange={this.handleChange}
               placeholder="Enter Password"
@@ -85,13 +95,14 @@ export class Signup extends Component {
             <br />
             <input
               type="password"
-              value={this.state.password}
+              name="passwordConfirm"
+              value={this.state.passwordConfirm}
               onChange={this.handleChange}
               placeholder="Confirm Password"
               className="form-input"
             />
             <br />
-            <input type="checkbox" className="check" value="check" />
+            <input type="checkbox" className="check" />
             Keep me Signed in?
             <br />
             <input type="submit" value="Sign Up" className="btn" />
@@ -101,6 +112,21 @@ export class Signup extends Component {
             Already have an Account...<a href="Signin.js">Sign In Here</a>
           </p>
         </section>
+
+        {this.state.loginSuccess && (
+          <div>
+            <button className="btn">
+              SignUp Successful...Welcome {this.state.fullname}
+            </button>
+          </div>
+        )}
+        {this.state.loginFail && (
+          <div>
+            <button className="btn">
+              Signup Failed...Check details and Try Again
+            </button>
+          </div>
+        )}
       </div>
     );
   }
