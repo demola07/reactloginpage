@@ -20,7 +20,7 @@ class Signin extends Component {
         data.status
           ? this.setState({
               loginSuccess: true,
-              fullname: data.userDetails.fullname
+              fullname: data.result.fullname
             })
           : this.setState({
               loginFail: true

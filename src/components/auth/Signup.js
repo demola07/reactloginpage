@@ -6,28 +6,29 @@ export class Signup extends Component {
     super(props);
 
     this.state = {
-      fullname: "",
-      username: "",
-      email: "",
-      password: "",
+      user: {
+        fullname: "",
+        username: "",
+        email: "",
+        password: ""
+      },
       passwordConfirm: ""
     };
   }
 
   handleSubmit = async event => {
     event.preventDefault();
-    if (this.state.password !== this.state.passwordConfirm) {
+    if (this.state.user.password !== this.state.passwordConfirm) {
       alert(`Password mismatch...Try again`);
     } else {
       axios
-        .post("http://localhost:8080/signup", this.state)
+        .post("http://localhost:8080/signup", this.state.user)
         .then(res => {
           const data = res.data;
-
           data.status
             ? this.setState({
                 loginSuccess: true,
-                fullname: data.userDetails.fullname
+                fullname: data.result.fullname
               })
             : this.setState({
                 loginFail: true
@@ -43,9 +44,17 @@ export class Signup extends Component {
     let target = event.target;
     let value = target.value === "checked" ? target.checked : target.value;
     let name = target.name;
-    this.setState({
-      [name]: value
-    });
+    let userN = this.state.user;
+    if (name == "passwordConfirm") {
+      this.setState({
+        [name]: value
+      });
+    } else {
+      userN[name] = value;
+      this.setState({
+        user: userN
+      });
+    }
   };
 
   render() {
@@ -60,7 +69,7 @@ export class Signup extends Component {
             <input
               type="text"
               name="fullname"
-              value={this.state.fullname}
+              value={this.state.user.fullname}
               onChange={this.handleChange}
               placeholder="FullName"
               className="form-input"
@@ -69,7 +78,7 @@ export class Signup extends Component {
             <input
               type="text"
               name="username"
-              value={this.state.username}
+              value={this.state.user.username}
               onChange={this.handleChange}
               placeholder="Enter UserName"
               className="form-input"
@@ -78,7 +87,7 @@ export class Signup extends Component {
             <input
               type="email"
               name="email"
-              value={this.state.email}
+              value={this.state.user.email}
               onChange={this.handleChange}
               placeholder="email@example.com"
               className="form-input"
@@ -87,7 +96,7 @@ export class Signup extends Component {
             <input
               type="password"
               name="password"
-              value={this.state.password}
+              value={this.state.user.password}
               onChange={this.handleChange}
               placeholder="Enter Password"
               className="form-input"
@@ -123,7 +132,7 @@ export class Signup extends Component {
         {this.state.loginFail && (
           <div>
             <button className="btn">
-              Signup Failed...Check details and Try Again
+              Signup Failed...Invalid Username or Password
             </button>
           </div>
         )}
