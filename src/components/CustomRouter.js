@@ -7,9 +7,9 @@ import Blog from "./Blog";
 const CustomRouter = () => {
   return (
     <R>
+      <Route path="/" component={Blog} />
       <Route path="/Signin" component={Signin} />
       <Route path="/Signup" component={Signup} />
-      <Route path="/Blog" component={Blog} />
     </R>
   );
 };
