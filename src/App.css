@@ -1,8 +1,155 @@
+* {
+  box-sizing: border-box;
+}
 body {
+  padding: 0 1em 1em 1em;
+}
+/* Layout Component */
+.layout {
+  padding-top: 0px;
+  margin-top: 0px;
+  /* background-color: rgb(0, 4, 255); */
+}
+
+nav {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1170px;
+  padding-top: 1em;
+  margin-bottom: 1em;
+  /* background-color: aqua; */
+}
+#left {
+  margin-left: 0.6em;
+  float: left;
+}
+/* #clears {
+  clear: left;
+} */
+nav .linkA {
+  margin-top: 11em;
+  /* background-color: #2196f3; */
+  font-size: 30px;
+  text-decoration: none;
+}
+
+ul {
+  float: right;
+  margin-top: 2em;
+  /* margin-left: 15em; */
+  list-style: none;
+}
+
+li {
+  display: inline;
+  padding: 15px;
+}
+.linkB {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Signin and Signup Components */
+.wrapper {
+  margin-top: 5em;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+  box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
+}
+.wrapper > * {
+  padding: 1em;
+}
+
+.header {
+  margin-top: 0px;
+  background-color: #c9e6ff;
+  text-align: center;
+}
+.head h1 {
+  margin-bottom: 1em;
+}
+.head p {
+  margin-bottom: 3em;
+}
+head h3 {
+  margin-bottom: 1em;
+}
+
+.signin {
+  background-color: #f9feff;
+}
+.form {
+  height: 80%;
+  width: 100%;
+  margin-top: 10px;
+}
+.form-input {
+  background-color: #eaf2f8;
+  width: 100%;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  height: 50px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(24, 19, 19);
+  border: 1px solid #c9e6ff;
+}
+.btn {
+  width: 100%;
+  height: 45px;
+  border: none;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  background: #2196f3;
+  color: #fff;
+}
+.btn:hover {
+  background: darkblue;
+  color: whitesmoke;
+}
+#para {
+  margin-bottom: 0em;
+  padding-bottom: 0em;
+  font-weight: 500;
+}
+a {
+  padding-top: 0em;
+  margin-top: 0em;
+}
+a.link {
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(19, 3, 49);
+}
+
+@media (min-width: 700px) {
+  .wrapper {
+    margin-top: 9em;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1em;
+  }
+  .wrapper > * {
+    padding: 2em;
+  }
+}
+
+/* body {
+  box-sizing: border-box;
   background-color: #ffffff;
   font-family: sans-serif, Georgia, "Palatino Linotype", Arial, Helvetica;
 }
-.App {
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+ .App {
   text-align: center;
   background-color: #ffffff;
   width: 40%;
@@ -10,7 +157,7 @@ body {
   margin-left: 58%;
   margin-top: 0%;
   border-radius: 5px;
-}
+} 
 .header {
   padding: 30px;
   margin-top: 50px;
@@ -98,4 +245,4 @@ a.link {
 }
 .link:hover {
   color: rgb(12, 1, 32);
-}
+} */

@@ -4,7 +4,7 @@ import CustomRouter from "./components/CustomRouter";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <CustomRouter />
     </div>
   );

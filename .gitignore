@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 List.js
+Name.js
 
 # testing
 /coverage

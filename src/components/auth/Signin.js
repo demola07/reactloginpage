@@ -44,59 +44,68 @@ class Signin extends Component {
   render() {
     return (
       <Layout>
-        <div>
-          <header className="header">
-            <h1 className="head">Sign in to your Account</h1>
-          </header>
+        <div className="wrapper">
+          <div className="header">
+            <header className="head">
+              <h1>WELCOME TO TECHONE BLOG</h1>
+              <p>
+                Read and Post about Latest Software development features in
+                Insudtry
+              </p>
+              <h3 className="head">Sign in to your Account</h3>
+            </header>
+          </div>
+          <div className="signin">
+            <section>
+              <form className="form" onSubmit={this.handleSubmit}>
+                <input
+                  type="email"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  placeholder="email@example.com"
+                  className="form-input"
+                />
+                <br />
+                <input
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  placeholder="Enter Password"
+                  className="form-input"
+                />
+                <br />
+                <input type="checkbox" className="check" />
+                Keep me signed in?
+                <br />
+                <input type="submit" value="Sign In" className="btn" />
+              </form>
 
-          <section className="container">
-            <form className="form" onSubmit={this.handleSubmit}>
-              <input
-                type="email"
-                name="email"
-                value={this.state.email}
-                onChange={this.handleChange}
-                placeholder="email@example.com"
-                className="form-input"
-              />
-              <br />
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-                placeholder="Enter Password"
-                className="form-input"
-              />
-              <br />
-              <input type="checkbox" className="check" />
-              Keep me Signed in?
-              <br />
-              <input type="submit" value="Sign In" className="btn" />
-            </form>
+              <a href="#" className="link">
+                Forgot your Password?
+              </a>
+              <p id="para">Don't have an Account</p>
+              <a href="Signup.js" className="link">
+                SignUp Here
+              </a>
+            </section>
 
-            <a href="#" className="link">
-              Forgot your Password?
-            </a>
-            <p>
-              Don't have an Account..<a href="Signup.js">SignUp Here</a>
-            </p>
-          </section>
-
-          {this.state.loginSuccess && (
-            <div>
-              <button className="btn">
-                Login Successful...Welcome {this.state.fullname}
-              </button>
-            </div>
-          )}
-          {this.state.loginFail && (
-            <div>
-              <button className="btn">
-                Login Failed...Check details and Try Again
-              </button>
-            </div>
-          )}
+            {this.state.loginSuccess && (
+              <div>
+                <button className="btn">
+                  Login Successful...Welcome {this.state.fullname}
+                </button>
+              </div>
+            )}
+            {this.state.loginFail && (
+              <div>
+                <button className="btn">
+                  Login Failed...Check details and Try Again
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </Layout>
     );
