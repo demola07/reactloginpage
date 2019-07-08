@@ -7,39 +7,63 @@ class Signin extends Component {
     super(props);
 
     this.state = {
-      email: "",
-      password: ""
+      user: {
+        email: "",
+        password: ""
+      },
+      loginFail: false,
+      loginSuccess: false
     };
+    this.baseState = this.state;
   }
 
   handleSubmit = async event => {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/signin", this.state)
+      .post("http://localhost:8080/signin", this.state.user)
       .then(res => {
         const data = res.data;
         data.status
           ? this.setState({
               loginSuccess: true,
-              fullname: data.result.fullname
+              fullname: data.value.fullname
             })
           : this.setState({
               loginFail: true
             });
+        setTimeout(() => {
+          this.setState(this.baseState);
+        }, 2000);
       })
       .catch(err => {
         console.log(err);
       });
   };
-
   handleChange = event => {
     let target = event.target;
-    let value = target.vale === "checked" ? target.checked : target.value;
+    let value = target.value === "checked" ? target.checked : target.value;
     let name = target.name;
-    this.setState({
-      [name]: value
-    });
+    let userN = this.state.user;
+    if (name == "passwordConfirm") {
+      this.setState({
+        [name]: value
+      });
+    } else {
+      userN[name] = value;
+      this.setState({
+        user: userN
+      });
+    }
   };
+
+  // handleChange = event => {
+  //   let target = event.target;
+  //   let value = target.vale === "checked" ? target.checked : target.value;
+  //   let name = target.name;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
 
   render() {
     return (
@@ -86,25 +110,24 @@ class Signin extends Component {
                 Forgot your Password?
               </a>
               <p id="para">Don't have an Account</p>
-              <a href="Signup.js" className="link">
+              <a href="./Signup.js" className="link">
                 SignUp Here
               </a>
+              {this.state.loginSuccess && (
+                <div>
+                  <button className="btn">
+                    Login Successful...Welcome {this.state.fullname}
+                  </button>
+                </div>
+              )}
+              {this.state.loginFail && (
+                <div>
+                  <button className="btn">
+                    Login Failed...Check details and Try Again
+                  </button>
+                </div>
+              )}
             </section>
-
-            {this.state.loginSuccess && (
-              <div>
-                <button className="btn">
-                  Login Successful...Welcome {this.state.fullname}
-                </button>
-              </div>
-            )}
-            {this.state.loginFail && (
-              <div>
-                <button className="btn">
-                  Login Failed...Check details and Try Again
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </Layout>

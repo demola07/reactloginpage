@@ -27,10 +27,16 @@ export default function Layout(props) {
                 Blog
               </a>
             </li>
+            <li>
+              <a className="linkB" href="/PublishPost">
+                Publish
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
-      <div>{props.children}</div>
+
+      {props.children}
     </div>
   );
 }

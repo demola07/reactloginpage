@@ -5,6 +5,7 @@ body {
   padding: 0 1em 1em 1em;
 }
 /* Layout Component */
+
 .layout {
   padding-top: 0px;
   margin-top: 0px;
@@ -14,7 +15,7 @@ body {
 nav {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1170px;
+  max-width: 800px;
   padding-top: 1em;
   margin-bottom: 1em;
   /* background-color: aqua; */
@@ -42,7 +43,7 @@ ul {
 
 li {
   display: inline;
-  padding: 15px;
+  padding: 5px;
 }
 .linkB {
   text-decoration: none;
@@ -52,7 +53,7 @@ li {
 /* Signin and Signup Components */
 .wrapper {
   margin-top: 5em;
-  max-width: 1170px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   padding: 1em;
@@ -79,11 +80,14 @@ head h3 {
 
 .signin {
   background-color: #f9feff;
+  /* margin-top: 1em; */
 }
 .form {
   height: 80%;
-  width: 100%;
-  margin-top: 10px;
+  /* max-width: 800px;
+  margin-left: auto;
+  margin-right: auto; */
+  /* margin-top: 4em; */
 }
 .form-input {
   background-color: #eaf2f8;
@@ -130,7 +134,7 @@ a:hover {
 
 @media (min-width: 700px) {
   .wrapper {
-    margin-top: 9em;
+    margin-top: 6em;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 1em;
@@ -138,111 +142,45 @@ a:hover {
   .wrapper > * {
     padding: 2em;
   }
+  li {
+    display: inline;
+    padding: 15px;
+  }
 }
 
-/* body {
-  box-sizing: border-box;
-  background-color: #ffffff;
-  font-family: sans-serif, Georgia, "Palatino Linotype", Arial, Helvetica;
+/* Blogpost Component */
+.blog {
+  margin-top: 6em;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.wrapper {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-}
- .App {
-  text-align: center;
-  background-color: #ffffff;
-  width: 40%;
-  height: 100%;
-  margin-left: 58%;
-  margin-top: 0%;
-  border-radius: 5px;
-} 
-.header {
-  padding: 30px;
-  margin-top: 50px;
-}
-.headerUp {
-  padding: 20px;
-  margin-top: 10px;
-}
-.head {
-  text-transform: uppercase;
-  margin-top: 20px;
+
+#tag2 {
   margin-bottom: 10px;
-  text-align: center;
+  color: blue;
 }
-.headUp {
-  text-transform: uppercase;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  text-align: center;
+#tag3 {
+  color: teal;
+  font-style: italic;
 }
-.container {
-  height: 100%;
-  width: 80%;
-  padding: 30px;
-  margin-left: 25px;
-  border-radius: 5px;
+
+/* publish post component */
+.textA {
+  margin-top: 10em;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.containerUp {
-  height: 100%;
-  width: 80%;
-  padding: 30px;
-  padding-bottom: 0px;
-  margin-left: 25px;
-  border-radius: 5px;
-}
-.form {
-  height: 70%;
-  width: 100%;
-  margin-top: 20px;
-}
-.formUp {
-  height: 70%;
-  width: 100%;
-  margin-top: -30px;
-  padding-bottom: 0%;
-  margin-bottom: -5%;
-}
-.form-input {
+.form-textarea {
   background-color: #eaf2f8;
   width: 100%;
-  box-sizing: border-box;
   margin-bottom: 15px;
   padding-bottom: 5px;
-  height: 50px;
+  height: 100px;
   border: none;
   padding: 10px;
   border-radius: 5px;
   color: rgb(24, 19, 19);
+  border: 1px solid #c9e6ff;
 }
-.form-input:focus {
-  background-color: #2874a6;
-  color: #ffffff;
-}
-.check {
-  margin-left: -270px;
-  margin-right: 10px;
-}
-.btn {
-  width: 100%;
-  height: 45px;
-  border: none;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  border-radius: 4px;
-  background: #2196f3;
-  color: #fff;
-}
-.btn:hover {
-  background: darkblue;
-  color: whitesmoke;
-}
-a.link {
-  text-decoration: none;
-}
-.link:hover {
-  color: rgb(12, 1, 32);
-} */

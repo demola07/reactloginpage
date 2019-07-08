@@ -13,8 +13,11 @@ export class Signup extends Component {
         email: "",
         password: ""
       },
-      passwordConfirm: ""
+      passwordConfirm: "",
+      loginSuccess: false,
+      loginFail: false
     };
+    this.baseState = this.state;
   }
 
   handleSubmit = async event => {
@@ -29,11 +32,14 @@ export class Signup extends Component {
           data.status
             ? this.setState({
                 loginSuccess: true,
-                fullname: data.result.fullname
+                fullname: data.value.fullname
               })
             : this.setState({
                 loginFail: true
               });
+          setTimeout(() => {
+            this.setState(this.baseState);
+          }, 2000);
         })
         .catch(err => {
           console.log(err);
@@ -74,7 +80,7 @@ export class Signup extends Component {
           </div>
           <div className="signin">
             <section>
-              <form className="formUp" onSubmit={this.handleSubmit}>
+              <form className="form" onSubmit={this.handleSubmit}>
                 <input
                   type="text"
                   name="fullname"
@@ -130,23 +136,20 @@ export class Signup extends Component {
               <a href="Signin.js" className="link">
                 Sign In Here
               </a>
+              {this.state.loginSuccess && (
+                <div>
+                  <button className="btn">
+                    SignUp Successful...Welcome {this.state.user.fullname}
+                  </button>
+                </div>
+              )}
+              {this.state.loginFail && (
+                <div>
+                  <button className="btn">Signup Failed..</button>
+                </div>
+              )}
             </section>
           </div>
-
-          {this.state.loginSuccess && (
-            <div>
-              <button className="btn">
-                SignUp Successful...Welcome {this.state.fullname}
-              </button>
-            </div>
-          )}
-          {this.state.loginFail && (
-            <div>
-              <button className="btn">
-                Signup Failed...Invalid Username or Password
-              </button>
-            </div>
-          )}
         </div>
       </Layout>
     );
