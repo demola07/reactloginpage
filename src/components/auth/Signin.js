@@ -12,7 +12,8 @@ class Signin extends Component {
         password: ""
       },
       loginFail: false,
-      loginSuccess: false
+      loginSuccess: false,
+      responseMessage: ""
     };
     this.baseState = this.state;
   }
@@ -25,10 +26,11 @@ class Signin extends Component {
         const data = res.data;
         data.status
           ? this.setState({
-              loginSuccess: true,
-              fullname: data.value.fullname
+              fullname: data.value.fullname,
+              loginSuccess: true
             })
           : this.setState({
+              responseMessage: data.message,
               loginFail: true
             });
         setTimeout(() => {
@@ -115,15 +117,15 @@ class Signin extends Component {
               </a>
               {this.state.loginSuccess && (
                 <div>
-                  <button className="btn">
+                  <button className="btn" id="btn1">
                     Login Successful...Welcome {this.state.fullname}
                   </button>
                 </div>
               )}
               {this.state.loginFail && (
                 <div>
-                  <button className="btn">
-                    Login Failed...Check details and Try Again
+                  <button className="btn" id="btn2">
+                    Login Failed...{this.state.responseMessage}
                   </button>
                 </div>
               )}

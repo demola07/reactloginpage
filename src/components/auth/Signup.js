@@ -15,7 +15,8 @@ export class Signup extends Component {
       },
       passwordConfirm: "",
       loginSuccess: false,
-      loginFail: false
+      loginFail: false,
+      responseMessage: ""
     };
     this.baseState = this.state;
   }
@@ -31,10 +32,11 @@ export class Signup extends Component {
           const data = res.data;
           data.status
             ? this.setState({
-                loginSuccess: true,
-                fullname: data.value.fullname
+                fullname: data.value.fullname,
+                loginSuccess: true
               })
             : this.setState({
+                responseMessage: data.message,
                 loginFail: true
               });
           setTimeout(() => {
@@ -138,14 +140,16 @@ export class Signup extends Component {
               </a>
               {this.state.loginSuccess && (
                 <div>
-                  <button className="btn">
+                  <button className="btn" id="btn1">
                     SignUp Successful...Welcome {this.state.user.fullname}
                   </button>
                 </div>
               )}
               {this.state.loginFail && (
                 <div>
-                  <button className="btn">Signup Failed..</button>
+                  <button className="btn" id="btn2">
+                    Signup Failed..{this.state.responseMessage}
+                  </button>
                 </div>
               )}
             </section>

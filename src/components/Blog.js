@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Layout from "./Layout";
 import Blogpost from "./Blogpost";
-import PublishPost from "./PublishPost";
+
 import axios from "axios";
 
 class Blog extends Component {
@@ -16,7 +16,7 @@ class Blog extends Component {
   async componentDidMount() {
     try {
       const response = await axios.post("http://localhost:8080/getposts");
-      console.log(response);
+      // console.log(response);
       this.setState({
         blogPosts: response.data
       });
