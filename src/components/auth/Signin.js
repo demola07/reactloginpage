@@ -18,6 +18,18 @@ class Signin extends Component {
     this.baseState = this.state;
   }
 
+  handleChange = event => {
+    let target = event.target;
+    let value = target.value === "checked" ? target.checked : target.value;
+    let name = target.name;
+    let userN = this.state.user;
+
+    userN[name] = value;
+    this.setState({
+      user: userN
+    });
+  };
+
   handleSubmit = async event => {
     event.preventDefault();
     axios
@@ -41,31 +53,6 @@ class Signin extends Component {
         console.log(err);
       });
   };
-  handleChange = event => {
-    let target = event.target;
-    let value = target.value === "checked" ? target.checked : target.value;
-    let name = target.name;
-    let userN = this.state.user;
-    if (name == "passwordConfirm") {
-      this.setState({
-        [name]: value
-      });
-    } else {
-      userN[name] = value;
-      this.setState({
-        user: userN
-      });
-    }
-  };
-
-  // handleChange = event => {
-  //   let target = event.target;
-  //   let value = target.vale === "checked" ? target.checked : target.value;
-  //   let name = target.name;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
 
   render() {
     return (

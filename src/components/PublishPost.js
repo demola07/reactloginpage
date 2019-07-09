@@ -7,29 +7,51 @@ class PublishPost extends Component {
     super(props);
 
     this.state = {
-      title: "",
-      author: "",
-      body: "",
-      date: new Date()
+      details: {
+        title: "",
+        author: "",
+        body: "",
+        date: new Date()
+      },
+      postSuccess: "",
+      postFailed: "",
+      responseMessage: ""
     };
+    this.baseState = this.state;
   }
 
   handleChange = event => {
     let target = event.target;
     let value = target.value;
     let name = target.name;
+    let detailsN = this.state.details;
+
+    detailsN[name] = value;
     this.setState({
-      [name]: value
+      details: detailsN
     });
   };
 
   handleSubmit = async event => {
     event.preventDefault();
+
     axios
-      .post("http://localhost:8080/publishpost", this.state)
+      .post("http://localhost:8080/publishpost", this.state.details)
       .then(res => {
-        console.log(res);
-        alert(`Post Successfully Saved`);
+        // console.log(res);
+        const data = res.data;
+        data.status
+          ? this.setState({
+              responseMessage: data.message,
+              postSuccess: true
+            })
+          : this.setState({
+              responseMessage: data.message,
+              postFailed: true
+            });
+        setTimeout(() => {
+          this.setState(this.baseState);
+        }, 2000);
       })
       .catch(err => {
         console.log(err);
@@ -62,8 +84,6 @@ class PublishPost extends Component {
             <br />
             <textarea
               name="body"
-              // rows="10"
-              // cols="50"
               value={this.state.body}
               onChange={this.handleChange}
               className="form-textarea"
@@ -72,6 +92,20 @@ class PublishPost extends Component {
             <br />
             <input type="submit" value="publish post" className="btn" />
           </form>
+          {this.state.postSuccess && (
+            <div>
+              <button className="btn" id="btn1">
+                {this.state.responseMessage}
+              </button>
+            </div>
+          )}
+          {this.state.postFailed && (
+            <div>
+              <button className="btn" id="btn2">
+                {this.state.responseMessage}
+              </button>
+            </div>
+          )}
         </div>
       </Layout>
     );

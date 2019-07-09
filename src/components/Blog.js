@@ -32,7 +32,7 @@ class Blog extends Component {
           {this.state.blogPosts.map(post => {
             return (
               <Blogpost
-                key={post.title}
+                key={post.body}
                 title={post.title}
                 author={post.author}
                 body={post.body}
@@ -41,7 +41,6 @@ class Blog extends Component {
             );
           })}
         </div>
-        <Blogpost />
       </Layout>
     );
   }

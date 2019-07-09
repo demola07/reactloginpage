@@ -21,6 +21,23 @@ export class Signup extends Component {
     this.baseState = this.state;
   }
 
+  handleChange = event => {
+    let target = event.target;
+    let value = target.value === "checked" ? target.checked : target.value;
+    let name = target.name;
+    let userN = this.state.user;
+    if (name == "passwordConfirm") {
+      this.setState({
+        [name]: value
+      });
+    } else {
+      userN[name] = value;
+      this.setState({
+        user: userN
+      });
+    }
+  };
+
   handleSubmit = async event => {
     event.preventDefault();
     if (this.state.user.password !== this.state.passwordConfirm) {
@@ -46,23 +63,6 @@ export class Signup extends Component {
         .catch(err => {
           console.log(err);
         });
-    }
-  };
-
-  handleChange = event => {
-    let target = event.target;
-    let value = target.value === "checked" ? target.checked : target.value;
-    let name = target.name;
-    let userN = this.state.user;
-    if (name == "passwordConfirm") {
-      this.setState({
-        [name]: value
-      });
-    } else {
-      userN[name] = value;
-      this.setState({
-        user: userN
-      });
     }
   };
 
