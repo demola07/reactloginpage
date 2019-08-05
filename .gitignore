@@ -6,6 +6,8 @@
 .pnp.js
 List.js
 Name.js
+/src/components/JobApplications.js
+/src/components/Jobs.js
 
 # testing
 /coverage

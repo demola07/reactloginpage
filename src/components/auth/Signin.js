@@ -13,7 +13,8 @@ class Signin extends Component {
       },
       loginFail: false,
       loginSuccess: false,
-      responseMessage: ""
+      responseMessage: "",
+      fullname: ""
     };
     this.baseState = this.state;
   }
@@ -30,21 +31,29 @@ class Signin extends Component {
     });
   };
 
+  loginGood(data) {
+    this.setState({
+      fullname: data.value.fullname,
+      loginSuccess: true
+    });
+    window.localStorage.setItem("user", data.value);
+    // console.log(localStorage);
+    window.location.reload();
+  }
+  loginBad(data) {
+    this.setState({
+      responseMessage: data.message,
+      loginFail: true
+    });
+  }
+
   handleSubmit = async event => {
     event.preventDefault();
     axios
       .post("http://localhost:8080/signin", this.state.user)
       .then(res => {
         const data = res.data;
-        data.status
-          ? this.setState({
-              fullname: data.value.fullname,
-              loginSuccess: true
-            })
-          : this.setState({
-              responseMessage: data.message,
-              loginFail: true
-            });
+        data.status ? this.loginGood(data) : this.loginBad(data);
         setTimeout(() => {
           this.setState(this.baseState);
         }, 2000);
