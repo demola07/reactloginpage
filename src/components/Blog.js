@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Layout from "./Layout";
-import Blogpost from "./Blogpost";
 
+import Blogpost from "./Blogpost";
 import axios from "axios";
 
 class Blog extends Component {
@@ -27,21 +26,19 @@ class Blog extends Component {
 
   render() {
     return (
-      <Layout>
-        <div>
-          {this.state.blogPosts.map(post => {
-            return (
-              <Blogpost
-                key={post.body}
-                title={post.title}
-                author={post.author}
-                body={post.body}
-                date={post.date}
-              />
-            );
-          })}
-        </div>
-      </Layout>
+      <div>
+        {this.state.blogPosts.map(post => {
+          return (
+            <Blogpost
+              key={post.body}
+              title={post.title}
+              author={post.author}
+              body={post.body}
+              date={post.date}
+            />
+          );
+        })}
+      </div>
     );
   }
 }

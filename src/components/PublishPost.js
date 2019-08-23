@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Layout from "./Layout";
 
 class PublishPost extends Component {
   constructor(props) {
@@ -61,53 +60,51 @@ class PublishPost extends Component {
 
   render() {
     return (
-      <Layout>
-        <div className="textA">
-          <form onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              name="title"
-              placeholder="Title"
-              value={this.state.title}
-              onChange={this.handleChange}
-              className="form-input"
-            />
-            <br />
-            <input
-              type="Author"
-              name="author"
-              placeholder="Author"
-              value={this.state.author}
-              onChange={this.handleChange}
-              className="form-input"
-            />
-            <br />
-            <textarea
-              name="body"
-              value={this.state.body}
-              onChange={this.handleChange}
-              className="form-textarea"
-              placeholder="Enter Post"
-            />
-            <br />
-            <input type="submit" value="publish post" className="btn" />
-          </form>
-          {this.state.postSuccess && (
-            <div>
-              <button className="btn" id="btn1">
-                {this.state.responseMessage}
-              </button>
-            </div>
-          )}
-          {this.state.postFailed && (
-            <div>
-              <button className="btn" id="btn2">
-                {this.state.responseMessage}
-              </button>
-            </div>
-          )}
-        </div>
-      </Layout>
+      <div className="textA">
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            name="title"
+            placeholder="Title"
+            value={this.state.title}
+            onChange={this.handleChange}
+            className="form-input"
+          />
+          <br />
+          <input
+            type="Author"
+            name="author"
+            placeholder="Author"
+            value={this.state.author}
+            onChange={this.handleChange}
+            className="form-input"
+          />
+          <br />
+          <textarea
+            name="body"
+            value={this.state.body}
+            onChange={this.handleChange}
+            className="form-textarea"
+            placeholder="Enter Post"
+          />
+          <br />
+          <input type="submit" value="publish post" className="btn" />
+        </form>
+        {this.state.postSuccess && (
+          <div>
+            <button className="btn" id="btn1">
+              {this.state.responseMessage}
+            </button>
+          </div>
+        )}
+        {this.state.postFailed && (
+          <div>
+            <button className="btn" id="btn2">
+              {this.state.responseMessage}
+            </button>
+          </div>
+        )}
+      </div>
     );
   }
 }
